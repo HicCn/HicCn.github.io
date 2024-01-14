@@ -22,12 +22,12 @@
 
   
 
-  <title>Unity 屏幕适配记录 | Hexo</title>
+  <title>编程思想反思：从实现到规则 | 我的笔记</title>
 
   
 
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/images/favicon.ico">
   
 
   <!--mathjax latex数学公式显示支持-->
@@ -48,7 +48,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
+    <div class="post-image" style="background-image: url(/images/banner.jpg)"></div>
   
 
   <!-- navbar -->
@@ -58,7 +58,7 @@
     <div class="navbar-logo">
       <a href="/">
         
-          Hexo
+          我的笔记
         
       </a>
     </div>
@@ -73,7 +73,7 @@
         
           <li class="navbar-list-item"><a href="/">首页</a></li>
         
-          <li class="navbar-list-item"><a href="/links">友链</a></li>
+          <li class="navbar-list-item"><a href="/works">展示</a></li>
         
           <li class="navbar-list-item"><a href="/about">关于</a></li>
         
@@ -99,29 +99,27 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">Unity 屏幕适配记录</h1>
+          <h1 class="title-wrap">编程思想反思：从实现到规则</h1>
           <h2 class="title-sub-wrap">
             <strong>John Doe</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-12-27T03:07:38.000Z" itemprop="datePublished">2022-12-27</time>
+            <time  class="article-date" datetime="2024-01-11T04:12:52.000Z" itemprop="datePublished">2024-01-11</time>
           </h2>
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2023-05-09T05:58:46.000Z" itemprop="dateUpdated">2023-05-09</time>
+              <time  class="article-updated" datetime="2024-01-14T11:01:01.950Z" itemprop="dateUpdated">2024-01-14</time>
             </h2>
           
           
           <ul class="wrap-list dark">
   
-    <li><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">📒 学习笔记</a></li>
+    <li><a href="/categories/%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">📒 心得体会</a></li>
   
 </ul>
           <ul class="wrap-list dark">
   
     <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-    <li><a href="/tags/unity/">🏷️ unity</a></li>
   
 </ul>
         </div>
@@ -145,8 +143,14 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>项目进行到屏幕适配阶段后，记录下这一阶段的工作。</p>
-<h2 id="适配思路"><a href="#适配思路" class="headerlink" title="适配思路"></a>适配思路</h2><p>根据屏幕的宽度，对高度进行适配</p>
+        <h2 id="当我写代码时，应该思考什么"><a href="#当我写代码时，应该思考什么" class="headerlink" title="当我写代码时，应该思考什么"></a>当我写代码时，应该思考什么</h2><p>毕业至今已经工作一年多了，随着代码量的提高与工作中不断地应对需求的调整，我才开始反思这些代码出了什么问题让他变得难以拓展和维护。</p>
+<h3 id="重点在于设计而非实现"><a href="#重点在于设计而非实现" class="headerlink" title="重点在于设计而非实现"></a>重点在于设计而非实现</h3><p>过去我一直觉得自己是具有设计能力的，其实不然，到现在我才意识到之前对待问题的角度依旧太过片面与短视。片面是指我在接到一个需求时所进行的设计依然只是用代码去描述这个需求，这是没问题，理清其中的逻辑关系是重要的，但对于一些整体的设计实际上是没有考虑到的，甚至意识不到我的考虑忽视了整体，举个例子来说，最初接到三消的的玩法需求时，处理方块的下落选择直接通过算法计算得到中间数据与最终数据，最后交由界面实现过度动画，这样的方式固然的效率高些的，但也意味这他失去了拓展性，如果中间数据难以描述方块的运动过程，这个需求就会变得很难推进。这同样也能体现过去编程的短视，追求最快的实现需求而没有进一步的深入分析。这让我思考设计时到底是在设计什么。<br>首先，设计肯定高与实现层面的，对于具体的实现过程只要提供支持即可，基于这个角度，那么设计层面应该实现的更抽象的规则，同样以三消举例，我之前的写法将交互的过程通过一个中间数据来实现具体的表现，这是基于过程，对游戏基本规则的描述。那么实际上的规则呢，对于三消游戏来说，这条规则应该是<em>当格子的下方为空，并且没有到达底部时，格子会往下前进一步</em>与<em>水平或竖直方向连续出现三个以上的色块时，这些色块会被消除</em>，对比我过去的实现方法，这两天规则当然需要被准确的实现，但他是被封闭在算法的计算中的，对于外部来说，只需要得到中间状态与最终状态就能实现基本的交互，这是可行的，但在现在看来，主次有些颠倒。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>设计应该在需求实现之前并且尽可能的脱离需求    </li>
+<li>设计应该设计规则而非具体过程</li>
+</ul>
+<p>当然，这只是一次大概的思考，实际的需求也是多变的，编程实际上也很难总结出一套方法论来应对所有的场景，只是作为感悟，在之后的开发中多加注意，多思考更好的实现方法来保障可程序的稳定与拓展。</p>
+<h2 id="另一个问题：-在实现过程中代码的效率重要还是可读性重要"><a href="#另一个问题：-在实现过程中代码的效率重要还是可读性重要" class="headerlink" title="另一个问题： 在实现过程中代码的效率重要还是可读性重要"></a>另一个问题： 在实现过程中代码的效率重要还是可读性重要</h2><p>这个问题也是我在反思过程中一直困扰我的点，毫无疑问效率和可读性都是重要的，但在实际编程中总是难找到其中的平衡。如果一定要做出一个解释，只能是根据实际的需求进行取舍，在性能不敏感的场景尽可能的使代码易读，在对一些需要实时处理或者面对大量数据的场景，尽量的切分实现过程并完善备注来保证代码可读性的同时保证代码的效率。最后，时刻需要注意的是对函数块的拆封，避免一个脚本中杂糅过多功能。</p>
 
       </section>
 
@@ -159,8 +163,8 @@
     
     <div class="card-text">
       
-        <a href="/2023/01/03/LearningNotes-47/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">数据类型的基类与其一般方法</h2>
+        <a href="/2024/01/13/LearningNotes-46/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Unity中复用列表实现过程</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -174,8 +178,8 @@
     
     <div class="card-text">
       
-        <a href="/2022/12/27/LearningNotes-45/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">Unity UI的三种布局方式</h2>
+        <a href="/2023/03/30/LearningNotes-70/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">计算机图形学学习笔记-整体概述</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -203,13 +207,13 @@
       <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
   <div class="widget-body">
     
-      <img src="https://s.gravatar.com/avatar/2d6b803eea37de0257620d5fabee7e64?s=200&amp;r=g&amp;d=retro" class="soft-size--round soft-style--box" alt="Sukoshi">
+      <img src="/images/avatar.png" class="soft-size--round soft-style--box" alt="一秋下时">
     
     
-      <h2>Sukoshi</h2>
+      <h2>一秋下时</h2>
     
     
-      <p>贵在坚持</p>
+      <p>学习，进步，然后成为一个更好的游戏开发者。</p>
     
 
     <div class="count-box">
@@ -217,13 +221,13 @@
         <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
 </svg>
-        <span>70</span>
+        <span>67</span>
       </div>
       <div class="count-box--item">
         <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
 </svg>
-        7
+        6
       </div>
       <div class="count-box--item">
         <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -238,18 +242,6 @@
       
 
       
-<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
-  <div class="widget-title">
-    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
-</svg>
-    <span>NOTICE</span>
-  </div>
-  <div class="widget-body">
-    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
-  </div>
-</section>
-
 
       <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
   <div class="widget-title">
@@ -263,19 +255,19 @@
       
         <li class="categorys-list-item">
           <a href="/categories/%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">
-            心得体会 (4)
-          </a>
-        </li>
-      
-        <li class="categorys-list-item">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-            学习笔记 (55)
+            心得体会 (5)
           </a>
         </li>
       
         <li class="categorys-list-item">
           <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
             读书笔记 (3)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            学习笔记 (54)
           </a>
         </li>
       
@@ -288,12 +280,6 @@
         <li class="categorys-list-item">
           <a href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">
             备忘录 (2)
-          </a>
-        </li>
-      
-        <li class="categorys-list-item">
-          <a href="/categories/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">
-            开发笔记 (4)
           </a>
         </li>
       
@@ -316,7 +302,7 @@
   </div>
   <div class="widget-body">
     <div class="tags-cloud">
-      <a href="/tags/C/" style="font-size: 16.67px;" class="tags-cloud-7">C#</a> <a href="/tags/C/" style="font-size: 10px;" class="tags-cloud-0">C++</a> <a href="/tags/shader/" style="font-size: 13.33px;" class="tags-cloud-3">shader</a> <a href="/tags/unity/" style="font-size: 18.33px;" class="tags-cloud-8">unity</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/" style="font-size: 11.67px;" class="tags-cloud-2">工具记录</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 10px;" class="tags-cloud-0">思考</a> <a href="/tags/%E6%96%87%E6%91%98/" style="font-size: 10px;" class="tags-cloud-0">文摘</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;" class="tags-cloud-0">测试</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;" class="tags-cloud-5">游戏设计</a> <a href="/tags/%E7%8E%A9%E6%B3%95/" style="font-size: 10px;" class="tags-cloud-0">玩法</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;" class="tags-cloud-0">生活</a> <a href="/tags/%E7%99%BD%E7%92%A7%E5%BE%AE%E7%91%95/" style="font-size: 10px;" class="tags-cloud-0">白璧微瑕</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;" class="tags-cloud-3">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;" class="tags-cloud-10">编程</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">计算机网络</a> <a href="/tags/%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">通识</a>
+      <a href="/tags/C/" style="font-size: 16.67px;" class="tags-cloud-7">C#</a> <a href="/tags/C/" style="font-size: 10px;" class="tags-cloud-0">C++</a> <a href="/tags/shader/" style="font-size: 13.33px;" class="tags-cloud-3">shader</a> <a href="/tags/unity/" style="font-size: 18.33px;" class="tags-cloud-8">unity</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/" style="font-size: 11.67px;" class="tags-cloud-2">工具记录</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 10px;" class="tags-cloud-0">思考</a> <a href="/tags/%E6%96%87%E6%91%98/" style="font-size: 10px;" class="tags-cloud-0">文摘</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;" class="tags-cloud-0">测试</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;" class="tags-cloud-5">游戏设计</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%8E%A2%E8%AE%A8/" style="font-size: 10px;" class="tags-cloud-0">游戏设计探讨</a> <a href="/tags/%E7%8E%A9%E6%B3%95/" style="font-size: 10px;" class="tags-cloud-0">玩法</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;" class="tags-cloud-0">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;" class="tags-cloud-3">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;" class="tags-cloud-10">编程</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">计算机网络</a> <a href="/tags/%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">通识</a>
     </div>
   </div>
 </section>
@@ -337,19 +323,13 @@
         
       
         
-          <a href="https://github.com/miiiku/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/HicCn" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
             <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
 </svg>
           </a>
         
       
-        
-          <a href="https://twitter.com/guanquanhong" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
-            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
-</svg>
-          </a>
         
       
     </div>
