@@ -22,7 +22,7 @@
 
   
 
-  <title>毕业设计前期准备-学习参考 | 我的笔记</title>
+  <title>Unity热更新了解 | 我的笔记</title>
 
   
 
@@ -99,7 +99,7 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">毕业设计前期准备-学习参考</h1>
+          <h1 class="title-wrap">Unity热更新了解</h1>
           <h2 class="title-sub-wrap">
             <strong>John Doe</strong>
             <span>发布于</span>
@@ -108,7 +108,7 @@
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2024-01-10T20:58:31.646Z" itemprop="dateUpdated">2024-01-11</time>
+              <time  class="article-updated" datetime="2024-01-18T17:07:40.089Z" itemprop="dateUpdated">2024-01-19</time>
             </h2>
           
           
@@ -119,7 +119,7 @@
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">🏷️ 游戏设计</a></li>
+    <li><a href="/tags/unity/">🏷️ unity</a></li>
   
 </ul>
         </div>
@@ -143,7 +143,31 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h2 id="时空幻境游戏设计"><a href="#时空幻境游戏设计" class="headerlink" title="时空幻境游戏设计"></a>时空幻境游戏设计</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3>
+        <h2 id="简单说明"><a href="#简单说明" class="headerlink" title="简单说明"></a>简单说明</h2><p>如果没有热更新，软件发布之后如果需要进行更新，往往需要重新下载整个应用，当应用出现需要更新时，需要让用户转到商店进行重新下载对整个用户体验是会带来灾难性后果的，所以，在应用上线之后，对其进行实时的修复和更新，避免了用户需要重新下载或重新安装应用的麻烦，同时也能够加快应用的迭代速度。</p>
+<blockquote>
+<p>需要注意的是，由于软件的热更新机制往往会绕过应用商店的审核，出于用户安全的考虑，平台往往会加以限制。所以还需要根据平台规则提供相应的方案 <a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/116074">旧闻：苹果再次重申全面禁止热更新，不移除相关代码就下架</a></p>
+</blockquote>
+<p>热更新分为 资源热更新 和 代码热更新 两种，代码热更新实际上也是把代码当成资源的一种热更新，但通常所说的热更新一般是指代码热更新。</p>
+<ul>
+<li>资源热更新 主要通过AssetBundle来实现，在Unity编辑器内为游戏中所用到的资源指定AB包的名称和后缀，然后进行打包并上传服务器，待游戏运行时动态加载服务器上的AB资源包。</li>
+<li>代码热更新 主要包括Lua热更新、ILRuntime热更新和C#直接反射热更新等。由于ILRuntime热更新还不成熟可能存在一些坑，而C#直接反射热更新又不支持IOS平台，因此目前大多采用更成熟的、没有平台限制的Lua热更新方案。</li>
+</ul>
+<p>以下主要介绍代码热更新</p>
+<h2 id="热更新原理"><a href="#热更新原理" class="headerlink" title="热更新原理"></a>热更新原理</h2><p>热更新希望做到的是，当软件进行更新时，我们只需要将新的资源与旧的资源进行替换而不需要重新下载整个安装包即可完成一次更新。</p>
+<p><span class="heimu">了解完远比想象的复杂啊！！！！，本来想一文搞定，看来只能简单介绍了。</span></p>
+<h3 id="Lua热更原理"><a href="#Lua热更原理" class="headerlink" title="Lua热更原理"></a>Lua热更原理</h3><p>Lua是解释型语言，意味着Lua代码进行调整时并不需要经过重新编译即可使用，所以可以将逻辑代码转化为Lua脚本，以更新资源的形式对资源进行替换即可。</p>
+<p>相对应的框架有：</p>
+<ul>
+<li>XLua</li>
+<li>SLua</li>
+<li>ToLua</li>
+</ul>
+<h3 id="通过IL2CPP进行热更新"><a href="#通过IL2CPP进行热更新" class="headerlink" title="通过IL2CPP进行热更新"></a>通过IL2CPP进行热更新</h3><p>IL2CPP（Intermediate Language to C++）是Unity引擎中一种用于将C#代码编译为C++代码的转换器。它将C#的中间语言（IL）转换为高效的、可执行的C++代码，以提高游戏在不同平台上的性能和安全性。</p>
+<p>相对应的框架有：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hybridclr.doc.code-philosophy.com/docs/intro">HybridCLR</a></li>
+</ul>
+
       </section>
 
       
