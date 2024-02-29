@@ -6,7 +6,7 @@ tags:
 categories: 学习笔记
 date: 2022-11-16 14:04:04
 ---
->关联文章[Unity Shader入门精要基础篇笔记](http://120.48.66.218/2022/11/11/LearningNotes-11/)
+>关联文章[Unity Shader入门精要基础篇笔记](/2022/11/11/LearningNotes-11/)
 ## 什么是Shader
 shader是运行在GPU上的程序，常用的着色器语言有HLSL、GLSL、CG
 

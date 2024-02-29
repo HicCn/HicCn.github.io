@@ -1,6 +1,7 @@
 <!-- post list container -->
 <div class="body-container">
-  <div class="content-container layout-block article-list">
+  <div class="content-container layout-block post-container">
+    <div class="content-container article-list layout-block ">
     <% page.posts.each(function(post, i) { %>
       <div class="article-item layout-padding">
         <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
@@ -34,5 +35,17 @@
         </article>
       </div>
     <% }) %>
+  </div>
+    <div class="widget-info">
+      <%- partial("../_widget/widget-author") %>
+
+      <%- partial("../_widget/widget-toc", { page: page }) %>
+
+      <%- partial("../_widget/widget-notice") %>
+
+      <%- partial("../_widget/widget-categorys") %>
+
+      <%- partial("../_widget/widget-tags") %>
+    </div>
   </div>
 </div>

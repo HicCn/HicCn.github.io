@@ -8,12 +8,14 @@ date: 2022-11-11 00:05:03
 ---
 ## 概述
 vector容器具有以下基本特点-连续存储，长度灵活，随机访问。在stl_vector.h中可以看到<code>vector</code>继承自一个结构体基类<code>_Vector_base</code>，其中<code>_Vector_impl_data</code>结构体定义了三个存储<code>vector</code>关键位置的指针，即开始位置，结束位置和最大长度位置。
-
+~~~
     struct _Vector_impl_data
         {
         pointer _M_start;
         pointer _M_finish;
         pointer _M_end_of_storage;
+        }
+~~~
 对于<code>_M_start</code>与<code> _M_finish</code>很好理解，它指向了连续内存的开始和结束位置。但对于<code>_M_end_of_storage</code>需要注意的是它表示的是当前vecor容器的可用空间的尾部，意味着对与容器的扩容操作，他需要执行以下步骤
 - 先检查当前是否还存在可用空间，即<code>_M_finish</code>是否等于<code>_M_end_of_storage</code>，如果成立，则跳到2，不成立跳到3
 - 构造一个新的元素并插入<code>vector</code>中，并调整<code>_M_finish</code>指针
