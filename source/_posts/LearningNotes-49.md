@@ -11,7 +11,7 @@ date: 2023-01-09 11:58:38
 这是一个初级的笔记，通过一个unity Shader实例来了解unity中shader的使用
 
 {% image
-    url=""/images/post/post49-1""
+    url=""/assets/images/post/post49-1""
     title="效果展示"
 %}
 

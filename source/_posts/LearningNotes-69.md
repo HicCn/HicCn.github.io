@@ -16,7 +16,7 @@ date: 2023-03-25 12:16:04
 - 他人乐趣
 - 严肃乐趣
 {%  image
-    url="/images/post/post69-1.png"
+    url="/assets/images/post/post69-1.png"
 %}
 ### 困难乐趣
 对于困难乐趣的体验流程，可以概况出受到挫折-获得成就-得到回报。这样完整的体验才能让玩家感到乐趣

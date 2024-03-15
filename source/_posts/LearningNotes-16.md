@@ -9,7 +9,7 @@ date: 2022-11-16 01:05:37
 ## 常用的排序算法及其思想
 
 {% image
-    url="/images/post/post16-1.png"
+    url="/assets/images/post/post16-1.png"
     title="十大排序算法"
 %}
 

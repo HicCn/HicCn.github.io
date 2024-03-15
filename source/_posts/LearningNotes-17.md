@@ -22,7 +22,7 @@ date: 2022-11-16 03:21:55
 >https://www.cnblogs.com/May-day/p/6594574.html
 
 {%  image
-    url="/images/post/pos17-1.png"
+    url="/assets/images/post/pos17-1.png"
     title="C#编译流程"
 %}
 

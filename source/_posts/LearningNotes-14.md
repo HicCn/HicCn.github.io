@@ -23,7 +23,7 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n^2) < O(n^m) < O(2^n)
 - 只能大概进行衡量，具体还需要根据n的规模进行比较。
 
 {%  image
-    url="/images/post/post14-1.png"
+    url="/assets/images/post/post14-1.png"
     title="函数图形"
 %}
 

@@ -15,7 +15,7 @@ shader是运行在GPU上的程序，常用的着色器语言有HLSL、GLSL、CG
 ### ShaderLab
 在unity中，所有的unity Shader都是用ShaderLab来编写的，是unity为shader提供的一层抽象，其主要提供表面着色器（Surface Shader）和 顶点片段着色器（Vertex And Fragment Shader）。
 {%  image
-    url="/images/post/post29-1.png"
+    url="/assets/images/post/post29-1.png"
     title="unity shader入门精要中的描述"
 %}
 

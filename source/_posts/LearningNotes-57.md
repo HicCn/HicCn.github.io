@@ -34,5 +34,5 @@ IL2CPP（Intermediate Language to C++）是Unity引擎中一种用于将C#代码
 
 相对应的框架有：
 - [HybridCLR](https://hybridclr.doc.code-philosophy.com/docs/intro)
-
+- ILRuntime
 

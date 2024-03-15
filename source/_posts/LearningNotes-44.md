@@ -48,7 +48,7 @@ date: 2022-12-15 10:59:38
 >https://www.cnblogs.com/Fallever/p/8871456.html
 
 {%  image
-    url="/images/post/post44-1.png"
+    url="/assets/images/post/post44-1.png"
     title="常见的缓动函数"
 %}
 >来源 (https://easings.net/zh-cn)

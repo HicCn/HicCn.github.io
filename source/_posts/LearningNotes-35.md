@@ -21,7 +21,7 @@ date: 2022-12-06 09:17:56
 状态机可以抽象成一张有向图
 
 {%  image
-    url="/images/post/post35-1.jpg"
+    url="/assets/images/post/post35-1.jpg"
     title="状态机例图"
 %}
 

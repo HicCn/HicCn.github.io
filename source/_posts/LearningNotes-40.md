@@ -42,11 +42,11 @@ unity中有一些特殊的文件夹
 ## 效果
 
 {%  image
-    url="/images/post/post40-1.png"
+    url="/assets/images/post/post40-1.png"
     title="菜单效果"
 %}
 {%  image
-    url="/images/post/post40-2.png"
+    url="/assets/images/post/post40-2.png"
     title="点击效果"
 %}
 

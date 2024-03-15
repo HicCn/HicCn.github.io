@@ -5,7 +5,7 @@ menu:
   关于: /about
 
 # 主页banner图
-banner: /images/banner.jpg
+banner: /assets/images/banner.jpg
 
 # 站点通知信息
 notice:
@@ -13,7 +13,7 @@ notice:
 # 作者信息
 author:
   name: 一秋下时
-  avatar:  /images/avatar.png
+  avatar:  /assets/images/avatar.png
   description: 学习，进步，然后成为一个更好的游戏开发者。
 
 toc:
@@ -88,7 +88,7 @@ baidu_analytics:
 # 腾讯分析
 tencent_analytics: 
 # 站点ico
-favicon: /images/favicon.ico
+favicon: /assets/images/favicon.ico
 
 
 # Social Icon

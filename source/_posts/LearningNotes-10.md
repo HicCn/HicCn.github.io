@@ -20,7 +20,7 @@ vector容器具有以下基本特点-连续存储，长度灵活，随机访问�
 - 先检查当前是否还存在可用空间，即<code>_M_finish</code>是否等于<code>_M_end_of_storage</code>，如果成立，则跳到2，不成立跳到3
 - 构造一个新的元素并插入<code>vector</code>中，并调整<code>_M_finish</code>指针
 - 调用_M_realloc_insert，另寻他处，重新开辟空间，将原来的<code>vector</code>中的元素都拷贝到新的<code>vector</code>中，并将新元素也插入<code>vector</code>中，并销毁原来的<code>vector</code>以及其中的元素
-
+~~~
         emplace_back(_Args&&... __args)
         {
         if (this->_M_impl._M_finish != this->_M_impl._M_end_of_storage)
@@ -33,6 +33,7 @@ vector容器具有以下基本特点-连续存储，长度灵活，随机访问�
         }
         else
         _M_realloc_insert(end(), std::forward<_Args>(__args)...);
+~~~
 意味着超出内存空间的插入操作是不友好的。
 
 ### 插入操作

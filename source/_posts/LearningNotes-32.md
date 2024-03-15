@@ -80,7 +80,7 @@ IEnumerable接口可以理解为是一个可迭代的声明，实现了IEnumerab
 ## 迭代器类图
 
 {% image
-    url = "/images/post/post32-1.png"
+    url = "/assets/images/post/post32-1.png"
     title = "迭代器类图"
 %}
 

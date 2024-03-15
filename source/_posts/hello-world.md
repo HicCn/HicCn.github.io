@@ -7,7 +7,7 @@ aplayer : true
 dplayer : true
 ---
 
-### 这里是网站的开始，存根纪念。
+### 这里是网站的开始，存根纪念
 
 Hello World
 
@@ -21,7 +21,7 @@ b站视频导入测试，并添加样式
 
 图片测试
 {%  image
-    url="/images/Banner.jpg"
+    url="/assets/images/Banner.jpg"
     title="带描述带图片"
 %}
 
@@ -29,11 +29,11 @@ b站视频导入测试，并添加样式
 
 音频播放测试
 {%  aplayer
-    url="https://qiniu.sukoshi.xyz/public/music/鹿乃 - アイロニ.mp3"
+    url="<https://qiniu.sukoshi.xyz/public/music/鹿乃> - アイロニ.mp3"
     name="アイロニ"
     artist="鹿乃"
-    cover="https://qiniu.sukoshi.xyz/public/music/鹿乃 - アイロニ.jpg"
-    lrc="https://qiniu.sukoshi.xyz/public/music/鹿乃 - アイロニ.lrc"
+    cover="<https://qiniu.sukoshi.xyz/public/music/鹿乃> - アイロニ.jpg"
+    lrc="<https://qiniu.sukoshi.xyz/public/music/鹿乃> - アイロニ.lrc"
     lrcType="3"
 %}
 
@@ -41,8 +41,8 @@ b站视频导入测试，并添加样式
 
 视频测试
 {%  dplayer
-    url="https://qiniu.sukoshi.xyz/video/%E7%BE%8E.mp4"
-    pic="https://qiniu.sukoshi.xyz/video/%E7%BE%8E.mp4?vframe/jpg/offset/10"
+    url="<https://qiniu.sukoshi.xyz/video/%E7%BE%8E.mp4>"
+    pic="<https://qiniu.sukoshi.xyz/video/%E7%BE%8E.mp4?vframe/jpg/offset/10>"
 %}
 
 ---

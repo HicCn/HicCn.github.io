@@ -16,6 +16,6 @@ MonoBehaviour是Unity中用于实现游戏对象行为的组件基类，所有�
 >[unity文档](https://docs.unity3d.com/cn/current/Manual/ExecutionOrder.html)
 
 {%  image
-    url="/images/post/pos19-1.png"
+    url="/assets/images/post/pos19-1.png"
     title="脚本生命周期流程图"
 %}
