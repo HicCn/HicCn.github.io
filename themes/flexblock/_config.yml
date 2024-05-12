@@ -8,13 +8,13 @@ menu:
 banner: /assets/images/banner.jpg
 
 # 站点通知信息
-notice:
+notice: 
 
 # 作者信息
 author:
-  name: 一秋下时
+  name: 张华麟
   avatar:  /assets/images/avatar.png
-  description: 学习，进步，然后成为一个更好的游戏开发者。
+  description: 努力成为一个更好的游戏开发者。
 
 toc:
   max_depth: 3 # 生成 TOC 的最大深度
