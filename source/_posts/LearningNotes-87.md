@@ -1,18 +1,24 @@
-## TypeScript
-### javaScript与面向对象[参考文档](https://web.nodejs.cn/en-us/docs/web/javascript/inheritance_and_the_prototype_chain/)
-#### 动态类型
+---
+title: TypeScript 的基本认识
+date: 2024-05-27 01:28:24
+tags:
+    - 编程
+---
+
+## javaScript与面向对象[参考文档](https://web.nodejs.cn/en-us/docs/web/javascript/inheritance_and_the_prototype_chain/)
+### 动态类型
 JavaScript 中的变量不直接与任何特定值类型相关联，并且可以为任何变量分配（和重新分配）所有类型的值：
-#### 弱类型
+### 弱类型
 JavaScript 中允许隐式类型转换，而不是抛出类型错误。
-#### 设计理念
+### 设计理念
  - [原型继承模型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain):查找属性或方法时，会在对象的**原型**上查找，直到找到为止。[参考](https://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html)
 
-#### 具体设计
+### 具体设计
 - 在Javascript语言中，new命令后面跟的不是类，而是构造函数。
 - prototype属性： 它是一个对象，包含了可以由特定类型的所有实例共享的属性和方法。
 - 原型：每个JavaScript对象都有一个内置的属性叫做__proto__，这个属性指向它的原型对象。原型对象也可能有自己的原型，这样就形成了一个链式的继承结构。
 - 类：在JavaScript中类实际上是“特殊的 functions”，就像定义 函数表达式 和 函数声明 一样，类可以通过两种方式定义：类表达式```XXX = class{}``` 或 类声明 ```class XXX{}```。
-### 基本类型[官方文档](https://www.tslang.cn/docs/handbook/basic-types.html)
+## 基本类型[官方文档](https://www.tslang.cn/docs/handbook/basic-types.html)
 1. `number`：表示数字，可以是整数或浮点数。
 2. `string`：表示字符串，使用单引号或双引号定义。
 3. `boolean`：表示布尔值，值为 `true` 或 `false`。
@@ -27,7 +33,7 @@ JavaScript 中允许隐式类型转换，而不是抛出类型错误。
 12. `never`：表示永不存在的值的类型（例如函数返回错误或无限循环）。
 
 
-### 基本语法[官方文档](https://www.tslang.cn/docs/home.html)
+## 基本语法[官方文档](https://www.tslang.cn/docs/home.html)
 
 1. 声明变量并指定类型[中文文档](https://www.tslang.cn/docs/handbook/variable-declarations.html)
     ~~~ 
@@ -163,7 +169,7 @@ JavaScript 中允许隐式类型转换，而不是抛出类型错误。
 
 1. 泛型
 
-### 基本概念
+## 基本概念
 1. 语句块
 
 1. 对象字面量
@@ -178,8 +184,8 @@ let obj = {
 }
 ~~~
 
-### 特殊机制 
-#### Promise
+## 特殊机制 
+### Promise
  Promise 是 JavaScript 中用于异步编程的一种重要机制。在 TypeScript 中，Promise 是一种具有 then 和 catch 方法的对象，它表示一个异步操作的最终完成（或失败）及其结果值。
 
 一个 Promise 有以下三种状态：
