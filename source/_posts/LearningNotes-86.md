@@ -24,9 +24,6 @@ MVC已经是市面上大多数软件使用的常用架构了，它将应用程�
 ### 缺点
 - 业务逻辑与UI逻辑耦合在一起，显得控制层过于臃肿
 
-## 什么是MVVM
-
-MVVM是Model-View-ViewModel的缩写，它是一种基于数据驱动的UI架构。MVVM最早由微软提出，并在.NET Framework中得到了广泛的应用。
 ## MVVM是什么
 
 MVVM是Model-View-ViewModel的缩写，它是一种基于数据驱动的UI架构，所以也可以称为model-view-binder。MVVM最早由微软提出，并在.NET Framework中得到了广泛的应用。
