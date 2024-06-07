@@ -20,7 +20,7 @@
 
   
 
-  <title>Tag: 编程 | 我的笔记</title>
+  <title>图片资源管理方案 | 我的笔记</title>
 
   
 
@@ -44,7 +44,7 @@
   <div class="root-container">
     
 <!-- header container -->
-<header class="header-container">
+<header class="header-container post">
   
     <div class="post-image" style="background-image: url(/assets/images/banner.jpg)"></div>
   
@@ -91,16 +91,31 @@
 
   
   
-    
-    <div class="header-content">
-      <div class="post-text layout-block layout-padding">
-        <h1 class="title-wrap">编程</h1>
-        <h2 class="title-sub-wrap">当前标签下共有49篇文章</h2>
-      </div>
-    </div>
-  
 
   
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">图片资源管理方案</h1>
+          <h2 class="title-sub-wrap">
+            <strong></strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2024-06-07T17:01:56.000Z" itemprop="datePublished">2024-06-08</time>
+          </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">🏷️ 游戏开发</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
   
 
   
@@ -108,339 +123,122 @@
   
 </header>
 
-    <!-- 标签归档 -->
-<!-- post list container -->
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
 <div class="body-container">
-  <div class="content-container layout-block post-container">
-    <div class="content-container article-list layout-block ">
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
-          
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>游戏开发的过程中常常会产出很多素材，这些资源往往有部分是通用，有部分是特定场景的。但是我们在真正制作界面时又无法将又无法判断这个资源在后续是否会重复使用，因此，我们需要保证游戏中的通用素材被整理出来，在进行之后的图集整理之类的工作。这可以视图通过脚本进行解决。</p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><ol>
+<li>确定标准<ol>
+<li>确定多大的素材才有必要被整理为通用资源：游戏中的资源是被按模块加载的，它往往被要求将相同模块中的资源整理到一张图集中，以减少drawcall的数量。所以对于一些小的但是通用的资源，其实可以不与其他通用资源一起。而被视为这个模块的特点素材。</li>
+<li>确定资源被引用多少次才能被视为通用资源。</li>
+<li>确定通用的层级（2，3 可能在大部分项目中不会区分，因为基本可以打在一个图集上）<ol>
+<li>项目通用</li>
+<li>模块通用</li>
+<li>界面素材</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>整理素材<ol>
+<li>首先要确定在整理素材时，我们面对的是一个怎样的项目。以下是预设的一种情况，项目完全不处理通用素材，并且资源与预制体在不同模块间被互相引用（当开发者找不到素材时，就直接在其他位置找到这个素材并直接使用。）</li>
+<li>可以根据以下思路整理素材：<ol>
+<li>确定相似资源，并找到他的引用关系。<ol>
+<li>相似的九宫格素材</li>
+<li>大小不一致但是内容一致的素材</li>
+<li>人工筛选相似资源<ol>
+<li>脚本筛选出相似图片之后，在由人工确认哪些资源可以被视为同一资源，并且为其指定一个素材。将引用关系集合到该素材中。</li>
+</ol>
+</li>
+<li>当资源不达通用资源的标准时，为每个模块都拷贝一个素材，当资源达到通用资源的标准时，将这个素材拷贝到通用素材的文件夹中。</li>
+</ol>
+</li>
+<li>确定模块的划分<ol>
+<li>以某一目录的某文件夹下的所有预制体作为一个模块</li>
+<li>确定通用预制体只能使用通用资源</li>
+</ol>
+</li>
+<li>隔离开发环境与打包环境<ol>
+<li>不改变开发环境中的引用关系，而是将处理后的资源拷贝到一个新的目录下，来隔离脚本的操作。</li>
+</ol>
+</li>
+<li>其他资源管理工具<ol>
+<li>打印资源引用关系作为人工校验步骤</li>
+</ol>
+</li>
+<li>其他问题，可能引起模块间的交叉引用的行为<ol>
+<li>使用对方的预制体，而预制体上带了对方模块中的资源</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><ul>
+<li>使用工具 ：Python</li>
+<li>目标<ol>
+<li>确定引用关系<ol>
+<li>UID -&gt; 路径 -&gt; log文件</li>
+<li>为所有的jpg和png创建一个对应的log文件，文件中包含了使用该文件的预制体路径</li>
+</ol>
+</li>
+<li>相似资源整理<ol>
+<li>将相似资源的log文件收集起来</li>
+<li>配置相似资源的确定资源</li>
+</ol>
+</li>
+<li>用HTML做可视化界面</li>
+<li>拷贝资源</li>
+<li>处理预制体中的重定向</li>
+</ol>
+</li>
+</ul>
 
-          <div class="card-text">
-            
-              <a href="/2024/05/27/LearningNotes-88/" itemprop="url">
-                <h2 class="card-text--title">单元测试基本概念</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2024-05-26T17:30:06.000Z" itemprop="datePublished">2024-05-27</time>
-            </div>
-            
-            <ul class="wrap-list light">
-  
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
-          
+      </section>
 
-          <div class="card-text">
-            
-              <a href="/2024/05/27/LearningNotes-87/" itemprop="url">
-                <h2 class="card-text--title">TypeScript 的基本认识</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2024-05-26T17:28:24.000Z" itemprop="datePublished">2024-05-27</time>
-            </div>
-            
-            <ul class="wrap-list light">
-  
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
+      
+      
+        <nav class="article-nav">
           
-
-          <div class="card-text">
-            
-              <a href="/2024/05/25/LearningNotes-86/" itemprop="url">
-                <h2 class="card-text--title">游戏UI框架-MVVM 设计与实现</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2024-05-25T09:30:59.000Z" itemprop="datePublished">2024-05-25</time>
-            </div>
-            
-              <div class="last-time">
-                <span>更新于</span>
-                <time  class="article-updated" datetime="2024-05-26T17:20:18.189Z" itemprop="dateUpdated">2024-05-27</time>
-              </div>
-            
-            <ul class="wrap-list light">
-  
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-    <li><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">🏷️ 游戏开发</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
           
-
-          <div class="card-text">
-            
-              <a href="/2024/04/11/LearningNotes-80/" itemprop="url">
-                <h2 class="card-text--title">C#中的内存管理</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2024-04-11T06:32:36.000Z" itemprop="datePublished">2024-04-11</time>
-            </div>
-            
-              <div class="last-time">
-                <span>更新于</span>
-                <time  class="article-updated" datetime="2024-04-21T06:42:36.005Z" itemprop="dateUpdated">2024-04-21</time>
-              </div>
-            
-            <ul class="wrap-list light">
-  
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-    <li><a href="/tags/C/">🏷️ C#</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
+    <div class="card-text">
+      
+        <a href="/2024/05/27/LearningNotes-88/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">单元测试基本概念</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
           
+        </nav>
+      
 
-          <div class="card-text">
-            
-              <a href="/2024/01/20/LearningNotes-72/" itemprop="url">
-                <h2 class="card-text--title">简单认识Lua</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2024-01-19T16:05:07.000Z" itemprop="datePublished">2024-01-20</time>
-            </div>
-            
-              <div class="last-time">
-                <span>更新于</span>
-                <time  class="article-updated" datetime="2024-03-15T06:03:19.905Z" itemprop="dateUpdated">2024-03-15</time>
-              </div>
-            
-            <ul class="wrap-list light">
-  
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
-          
+      <section class="page-message-container layout-padding">
+        
 
-          <div class="card-text">
-            
-              <a href="/2024/01/13/LearningNotes-46/" itemprop="url">
-                <h2 class="card-text--title">Unity中复用列表实现过程</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2024-01-12T16:46:22.000Z" itemprop="datePublished">2024-01-13</time>
-            </div>
-            
-              <div class="last-time">
-                <span>更新于</span>
-                <time  class="article-updated" datetime="2024-03-01T15:58:11.635Z" itemprop="dateUpdated">2024-03-01</time>
-              </div>
-            
-            <ul class="wrap-list light">
-  
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-    <li><a href="/tags/unity/">🏷️ unity</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
-          
 
-          <div class="card-text">
-            
-              <a href="/2024/01/11/LearningNotes-71/" itemprop="url">
-                <h2 class="card-text--title">编程思想反思：从实现到规则</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2024-01-11T04:12:52.000Z" itemprop="datePublished">2024-01-11</time>
-            </div>
-            
-              <div class="last-time">
-                <span>更新于</span>
-                <time  class="article-updated" datetime="2024-01-14T11:01:01.950Z" itemprop="dateUpdated">2024-01-14</time>
-              </div>
-            
-            <ul class="wrap-list light">
   
-    <li><a href="/categories/%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">📒 心得体会</a></li>
   
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
-          
 
-          <div class="card-text">
-            
-              <a href="/2023/03/23/LearningNotes-66/" itemprop="url">
-                <h2 class="card-text--title">Git仓库备忘</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2023-03-23T01:27:48.000Z" itemprop="datePublished">2023-03-23</time>
-            </div>
-            
-              <div class="last-time">
-                <span>更新于</span>
-                <time  class="article-updated" datetime="2024-01-10T20:58:31.648Z" itemprop="dateUpdated">2024-01-11</time>
-              </div>
-            
-            <ul class="wrap-list light">
   
-    <li><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">📒 学习笔记</a></li>
   
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
-          
 
-          <div class="card-text">
-            
-              <a href="/2023/02/06/LearningNotes-55/" itemprop="url">
-                <h2 class="card-text--title">《代码整洁之道》读书笔记</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2023-02-06T09:41:55.000Z" itemprop="datePublished">2023-02-06</time>
-            </div>
-            
-              <div class="last-time">
-                <span>更新于</span>
-                <time  class="article-updated" datetime="2024-01-10T20:58:31.646Z" itemprop="dateUpdated">2024-01-11</time>
-              </div>
-            
-            <ul class="wrap-list light">
-  
-    <li><a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">📒 读书笔记</a></li>
-  
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-      <div class="article-item layout-padding">
-        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
-          
 
-          <div class="card-text">
-            
-              <a href="/2023/01/18/LearningNotes-51/" itemprop="url">
-                <h2 class="card-text--title">Unity 音频管理</h2>
-              </a>
-            
-            <div class="card-text--row">
-              <span>发布于</span>
-              <time  class="article-date" datetime="2023-01-18T02:03:47.000Z" itemprop="datePublished">2023-01-18</time>
-            </div>
-            
-              <div class="last-time">
-                <span>更新于</span>
-                <time  class="article-updated" datetime="2024-01-10T20:58:31.645Z" itemprop="dateUpdated">2024-01-11</time>
-              </div>
-            
-            <ul class="wrap-list light">
-  
-    <li><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">📒 学习笔记</a></li>
-  
-</ul>
-            <ul class="wrap-list light">
-  
-    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
-  
-    <li><a href="/tags/unity/">🏷️ unity</a></li>
-  
-</ul>
-          </div>
-        </article>
-      </div>
-    
-  </div>
+      </section>
+    </div>
     <div class="widget-info">
       <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
   <div class="widget-body">
@@ -545,16 +343,8 @@
   </div>
 </section>
     </div>
-  </div>
+  </article>
 </div>
-
-<!-- page container -->
-
-  <nav class="page-container">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/tags/%E7%BC%96%E7%A8%8B/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/tags/%E7%BC%96%E7%A8%8B/page/5/">5</a><a class="extend next" rel="next" href="/tags/%E7%BC%96%E7%A8%8B/page/2/">&gt;</a>
-  </nav>
-
 
     <!-- footer container -->
 <footer id="footer" class="footer">
