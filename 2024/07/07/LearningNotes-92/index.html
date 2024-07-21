@@ -20,7 +20,7 @@
 
   
 
-  <title>Git提交title | 我的笔记</title>
+  <title>帧同步设计 | 我的笔记</title>
 
   
 
@@ -97,27 +97,27 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">Git提交title</h1>
+          <h1 class="title-wrap">帧同步设计</h1>
           <h2 class="title-sub-wrap">
             <strong></strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-12-12T09:08:18.000Z" itemprop="datePublished">2022-12-12</time>
+            <time  class="article-date" datetime="2024-07-06T18:16:08.000Z" itemprop="datePublished">2024-07-07</time>
           </h2>
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2024-01-10T20:58:31.644Z" itemprop="dateUpdated">2024-01-11</time>
+              <time  class="article-updated" datetime="2024-07-21T17:19:25.086Z" itemprop="dateUpdated">2024-07-22</time>
             </h2>
           
           
           <ul class="wrap-list dark">
   
-    <li><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">📒 学习笔记</a></li>
-  
 </ul>
           <ul class="wrap-list dark">
   
     <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
+  
+    <li><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">🏷️ 游戏开发</a></li>
   
 </ul>
         </div>
@@ -141,24 +141,54 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <ul>
-<li>feat: 新功能、新特性</li>
-<li>fix: 修改 bug</li>
-<li>perf: 更改代码，以提高性能（在不影响代码内部行为的前提下，对程序性能进行优化）</li>
-<li>refactor: 代码重构（重构，在不影响代码内部行为、功能下的代码修改）</li>
-<li>docs: 文档修改</li>
-<li>style: 代码格式修改, 注意不是 css 修改（例如分号修改）</li>
-<li>test: 测试用例新增、修改</li>
-<li>build: 影响项目构建或依赖项修改</li>
-<li>revert: 恢复上一次提交</li>
-<li>ci: 持续集成相关文件修改</li>
-<li>chore: 其他修改（不在上述类型中的修改）</li>
-<li>release: 发布新版本</li>
-<li>workflow: 工作流相关文件修改</li>
+        <h2 id="为什么需要帧同步"><a href="#为什么需要帧同步" class="headerlink" title="为什么需要帧同步"></a>为什么需要帧同步</h2><ul>
+<li>对于网络游戏天然需要一个同步策略</li>
+<li>帧同步能网络延迟带来的操作反馈不及时</li>
 </ul>
-<blockquote>
-<p>应以团队规范为准</p>
-</blockquote>
+<h2 id="对比其他同步策略"><a href="#对比其他同步策略" class="headerlink" title="对比其他同步策略"></a>对比其他同步策略</h2><table>
+<thead>
+<tr>
+<th>同步策略</th>
+<th>传输内容</th>
+<th>逻辑计算</th>
+<th>断线重连</th>
+<th>回放&#x2F;观战</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>帧同步</td>
+<td>操作</td>
+<td>客户端</td>
+<td>逐帧快进</td>
+<td>天然支持</td>
+</tr>
+<tr>
+<td>状态同步</td>
+<td>结果</td>
+<td>服务端</td>
+<td>等待下次同步</td>
+<td>额外实现</td>
+</tr>
+</tbody></table>
+<h2 id="基本的网络知识"><a href="#基本的网络知识" class="headerlink" title="基本的网络知识"></a>基本的网络知识</h2><h3 id="网络延迟"><a href="#网络延迟" class="headerlink" title="网络延迟"></a>网络延迟</h3><h3 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h3><h2 id="帧同步"><a href="#帧同步" class="headerlink" title="帧同步"></a>帧同步</h2><h3 id="核心设计"><a href="#核心设计" class="headerlink" title="核心设计"></a>核心设计</h3><ul>
+<li>逻辑与表现分离</li>
+<li>依赖状态（状态计算）（借鉴状态同步的策略）<ul>
+<li>老状态 + 新输入 &#x3D; 新状态</li>
+<li>抽离系统的输入输出（内部&#x2F;外部）,确保仅有外部产生输入时，才会改变状态</li>
+<li>数据快照</li>
+</ul>
+</li>
+</ul>
+<h3 id="冲突的解决思路"><a href="#冲突的解决思路" class="headerlink" title="冲突的解决思路"></a>冲突的解决思路</h3><p>冲突基本发生在</p>
+<ul>
+<li>预测<ul>
+<li>服务端输入总是在客户端之后，只有服务端输入与客户端输入不同时才需要解决冲突</li>
+</ul>
+</li>
+<li>和解</li>
+<li>插值</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/YouRenJee/LockstepFundation">https://github.com/YouRenJee/LockstepFundation</a><br><a target="_blank" rel="noopener" href="https://github.com/Tencent/xLua/issues/834">https://github.com/Tencent/xLua/issues/834</a></p>
 
       </section>
 
@@ -171,8 +201,8 @@
     
     <div class="card-text">
       
-        <a href="/2022/12/14/LearningNotes-43/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">深拷贝与浅拷贝</h2>
+        <a href="/2024/07/21/LearningNotes-91/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">RVO 源码笔记</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -186,8 +216,8 @@
     
     <div class="card-text">
       
-        <a href="/2022/12/09/LearningNotes-41/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">unity 图片和文本组合居中</h2>
+        <a href="/2024/06/09/LearningNotes-90/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">故事机-程序化剧情</h2>
         </a>
       
       <div class="card-text--row">Older</div>
