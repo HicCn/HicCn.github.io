@@ -1,6 +1,7 @@
 ---
 title: laya 基本认识
 date: 2024-04-30 13:06:29
+categories: 学习笔记
 tags:
     - laya
     - 工具记录

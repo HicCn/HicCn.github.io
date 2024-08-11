@@ -1,6 +1,7 @@
 ---
 title: Unity中的刚体、碰撞器与碰撞检测
 date: 2024-03-25 11:16:38
+categories: 学习笔记
 tags:
     - unity
 ---
