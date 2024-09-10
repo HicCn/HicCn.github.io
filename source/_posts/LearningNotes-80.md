@@ -1,6 +1,7 @@
 ---
 title: C#中的内存管理
 date: 2024-04-11 14:32:36
+categories: 学习笔记
 tags:
     - 编程
     - C#
