@@ -66,18 +66,20 @@ Godot 没有严格的目录结构规范，一个空项目包(c#)含，默认文�
                 "command": "dotnet",
                 "type": "process",
                 "args": [
-                    "build",
-                    "${workspaceFolder}/GodotHello.csproj",
-                    "-c", "Debug",
-                    "-o", "${workspaceFolder}/bin/Debug/net7.0"
+                    "build"
                 ],
-                "problemMatcher": [],
-                "group": {
-                    "kind": "build",
-                    "isDefault": true
+                "problemMatcher": "$msCompile",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "silent",
+                    "focus": false,
+                    "panel": "shared",
+                    "showReuseMessage": true,
+                    "clear": false
                 }
             }
         ]
+    }
     ~~~
 
 
