@@ -30,6 +30,8 @@ Godot 没有严格的目录结构规范，一个空项目包(c#)含，默认文�
 
 ### vsCode 环境搭建
 - 插件
+  - C#
+  - C# Tools for Godot
   - code-translate 翻译插件
 - 设置控制台编码格式
   - 
@@ -105,3 +107,18 @@ namespace HelloWorldProject
 ## API查询
 - [Godot API](https://docs.godotengine.org/zh-cn/4.x/classes/index.html)
 
+## Godot 基本认识
+- [推荐教程](https://www.bilibili.com/video/BV1kC4y1677m/)
+- [设计理念](https://docs.godotengine.org/zh-cn/4.x/getting_started/introduction/godot_design_philosophy.html)
+- 所有对象都是Node的子类
+- 节点树
+- 不区分场景和预制体
+- 不区分节点和组件
+  - 节点即组件
+- 信号
+  - ![alt text](image.png)
+
+## C#版本接入luban
+- 使用.net版本的luban
+- 将对应的luban核心代码放入项目
+- 配置外部工具
