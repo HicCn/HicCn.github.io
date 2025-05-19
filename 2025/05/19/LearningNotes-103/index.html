@@ -20,7 +20,7 @@
 
   
 
-  <title>骨骼动画记录-Godot | 我的笔记</title>
+  <title>游戏开发的策划视角是什么？ | 我的笔记</title>
 
   
 
@@ -97,11 +97,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">骨骼动画记录-Godot</h1>
+          <h1 class="title-wrap">游戏开发的策划视角是什么？</h1>
           <h2 class="title-sub-wrap">
             <strong></strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2024-11-14T11:40:03.000Z" itemprop="datePublished">2024-11-14</time>
+            <time  class="article-date" datetime="2025-05-19T09:36:15.000Z" itemprop="datePublished">2025-05-19</time>
           </h2>
           
           
@@ -112,7 +112,9 @@
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/%E5%8A%A8%E7%94%BB/">🏷️ 动画</a></li>
+    <li><a href="/tags/%E6%80%9D%E8%80%83/">🏷️ 思考</a></li>
+  
+    <li><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">🏷️ 游戏开发</a></li>
   
 </ul>
         </div>
@@ -136,11 +138,73 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h2 id="骨骼动画"><a href="#骨骼动画" class="headerlink" title="骨骼动画"></a>骨骼动画</h2><p>骨骼动画是一种通过骨骼和关节来控制角色的动画技术，可以使用少量的美术素材完成角色的基本动作。基本上，可以理解成是皮影戏并且套用相关的技巧。</p>
-<p>目前骨骼动画的软件有不少，本来在考虑是否需要使用spine,但是考虑到独立开发，使用引擎内自带的骨骼动画来实现基本的需求即可。</p>
-<p>以下记录下使用Godot编辑器内的骨骼动画编辑来实现动画的基本步骤和关注点。</p>
-<p><a target="_blank" rel="noopener" href="https://docs.godotengine.org/zh-cn/4.x/tutorials/animation/cutout_animation.html#doc-cutout-animation">骨骼动画说明</a><br><a target="_blank" rel="noopener" href="https://docs.godotengine.org/zh-cn/4.x/tutorials/animation/2d_skeletons.html#introduction">官方文档</a></p>
-<h2 id="素材要求"><a href="#素材要求" class="headerlink" title="素材要求"></a>素材要求</h2><p>对应皮影戏的道具，基本区分为头部，躯干和四肢六个部分，有必要也可以在腰部将躯干分为两部分，另一方面，可以依赖骨骼动画中带有的权重达到分部位的效果</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这应该是一篇经验归因的笔记，不同的人或者不同岗位甚至不同游戏类型的开发者应该都有各自的视角。</p>
+<h2 id="策划视角是什么"><a href="#策划视角是什么" class="headerlink" title="策划视角是什么"></a>策划视角是什么</h2><p>策划视角包含了开发者观察游戏的角度，以及对游戏的系统性建构。玩家视角，玩家往往在谈体验，这里割草很爽，那里操作很麻烦，而策划需要从系统性的角度去理解游戏，其他的开发者是用了什么样的方式去构建出游戏的爽感，游戏中不舒服的部分是不是必要的，是为了控制内容消耗的过快，还是因为设计上的缺陷，总的来说策划的视角应该是包含玩家视角并且高于玩家视角的。</p>
+<h2 id="如何构建"><a href="#如何构建" class="headerlink" title="如何构建"></a>如何构建</h2><p>应该说开发过程可以分成两个阶段，一个部分是游戏的核心体验已经构建出来后只需要围绕这个核心体验进行系统的搭建，玩法的创新，另一种情况就是核心体验还没有构建出来时如何从零到一的为整个游戏打下一个合理的地基。</p>
+<h2 id="核心体验是什么"><a href="#核心体验是什么" class="headerlink" title="核心体验是什么"></a>核心体验是什么</h2><p>核心体验是一个触及本质的词，他实际上包含了制作人对游戏的理解。在我看来游戏的核心体验可以拆解成以下几个部分</p>
+<ul>
+<li>玩家需求（期待在游戏中玩到什么）</li>
+<li>体验</li>
+<li>基本的游戏循环</li>
+</ul>
+<h2 id="设计总纲思路归纳-方法论"><a href="#设计总纲思路归纳-方法论" class="headerlink" title="设计总纲思路归纳(方法论)"></a>设计总纲思路归纳(方法论)</h2><ol>
+<li>需求层：锚定设计原点<ul>
+<li>目标：明确玩家核心诉求，建立需求理论与玩法的映射</li>
+<li>行动：<ul>
+<li>用「马斯洛需求模型」拆解玩家动机（生存欲 &#x2F; 社交欲 &#x2F; 成就欲）</li>
+<li>制作「需求 - 系统映射表」（如「社交需求→组队玩法 + 排行榜」）</li>
+<li>通过用户调研或玩家社区验证真伪需求（避免自嗨设计）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>设计循环层：需求与方案的动态验证<ul>
+<li>目标：确保设计方案持续贴合需求，规避逻辑漏洞</li>
+<li>行动：<ul>
+<li>初版设计：按需求生成功能框架初稿</li>
+<li>验证优化：通过测试 &#x2F; 反馈调整方案（如缩短新手引导时长）</li>
+<li>循环迭代：每阶段回归需求层校准方向</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>体验细化层：从抽象到模块落地<ul>
+<li>目标：将需求拆解为可执行的体验标准</li>
+<li>行动：<ul>
+<li>分模块定义体验指标（如战斗模块：操作延迟＜50ms，技能反馈清晰度≥80%）</li>
+<li>制作「体验热力图」标注痛点区域（如某关卡通过率＜30% 需调整）</li>
+<li>用「心流理论」校准难度曲线（挑战与能力差值控制在「略高」区间）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>功能框架层：系统具象化与联动<ul>
+<li>目标：将体验指标转化为具体功能，确保系统协同</li>
+<li>行动：<ul>
+<li>建立「功能架构图」（明确战斗 &#x2F; 养成 &#x2F; 社交模块的层级关系）</li>
+<li>设计模块交互逻辑（如养成系统资源→影响战斗数值→反哺社交组队效率）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>循环与节奏层：构建长线生态<ul>
+<li>目标：确定玩家的游戏流程，控制游戏节奏</li>
+<li>行动：<ul>
+<li>经济循环：平衡资源产出与消耗</li>
+<li>玩法循环：设计「表层 - 浅层 - 深层」的策略维度</li>
+<li>情感曲线：确定玩家情感波动</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="核心逻辑"><a href="#核心逻辑" class="headerlink" title="核心逻辑"></a>核心逻辑</h3><p>需求层（玩家动机）<br>↓<br>设计循环（需求→方案→验证→优化）<br>↓<br>体验层（模块体验标准）<br>↓<br>功能层（系统落地与联动）<br>↓<br>循环层（节奏控制）  </p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="用户画像"><a href="#用户画像" class="headerlink" title="用户画像"></a>用户画像</h3><ul>
+<li>年龄</li>
+<li>游戏类型偏好</li>
+<li>核心诉求</li>
+<li>重度&#x2F;轻度玩家</li>
+</ul>
 
       </section>
 
@@ -153,8 +217,8 @@
     
     <div class="card-text">
       
-        <a href="/2024/12/01/LearningNotes-101/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">以魂游为例，记录高难游戏设计的核心体验</h2>
+        <a href="/2025/05/19/LearningNotes-98/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Spine换装预研</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -168,8 +232,8 @@
     
     <div class="card-text">
       
-        <a href="/2024/11/10/LearningNotes-97/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">不应该过早的优化代码</h2>
+        <a href="/2025/05/18/LearningNotes-99/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">随机地图的实现方案预研</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -211,7 +275,7 @@
         <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
 </svg>
-        <span>96</span>
+        <span>97</span>
       </div>
       <div class="count-box--item">
         <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -245,7 +309,7 @@
       
         <li class="categorys-list-item">
           <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-            学习笔记 (70)
+            学习笔记 (71)
           </a>
         </li>
       
@@ -298,7 +362,7 @@
   </div>
   <div class="widget-body">
     <div class="tags-cloud">
-      <a href="/tags/C/" style="font-size: 17.14px;" class="tags-cloud-7">C#</a> <a href="/tags/C/" style="font-size: 10px;" class="tags-cloud-0">C++</a> <a href="/tags/laya/" style="font-size: 10px;" class="tags-cloud-0">laya</a> <a href="/tags/shader/" style="font-size: 12.86px;" class="tags-cloud-3">shader</a> <a href="/tags/unity/" style="font-size: 18.57px;" class="tags-cloud-9">unity</a> <a href="/tags/%E5%89%A7%E6%83%85/" style="font-size: 10px;" class="tags-cloud-0">剧情</a> <a href="/tags/%E5%8A%A8%E7%94%BB/" style="font-size: 11.43px;" class="tags-cloud-1">动画</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;" class="tags-cloud-0">工作记录</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/" style="font-size: 15.71px;" class="tags-cloud-6">工具记录</a> <a href="/tags/%E5%BC%80%E5%8F%91%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">开发通识</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 11.43px;" class="tags-cloud-1">思考</a> <a href="/tags/%E6%96%87%E6%91%98/" style="font-size: 10px;" class="tags-cloud-0">文摘</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;" class="tags-cloud-0">测试</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" style="font-size: 14.29px;" class="tags-cloud-4">游戏开发</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%8B%86%E8%A7%A3%E6%A1%88/" style="font-size: 10px;" class="tags-cloud-0">游戏拆解案</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6/" style="font-size: 10px;" class="tags-cloud-0">游戏机制</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 15.71px;" class="tags-cloud-6">游戏设计</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83/" style="font-size: 12.86px;" class="tags-cloud-3">游戏设计思考</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;" class="tags-cloud-0">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.86px;" class="tags-cloud-3">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;" class="tags-cloud-10">编程</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">计算机网络</a> <a href="/tags/%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">通识</a>
+      <a href="/tags/C/" style="font-size: 16.67px;" class="tags-cloud-7">C#</a> <a href="/tags/C/" style="font-size: 10px;" class="tags-cloud-0">C++</a> <a href="/tags/laya/" style="font-size: 10px;" class="tags-cloud-0">laya</a> <a href="/tags/shader/" style="font-size: 13.33px;" class="tags-cloud-3">shader</a> <a href="/tags/unity/" style="font-size: 18.33px;" class="tags-cloud-8">unity</a> <a href="/tags/%E5%89%A7%E6%83%85/" style="font-size: 10px;" class="tags-cloud-0">剧情</a> <a href="/tags/%E5%8A%A8%E7%94%BB/" style="font-size: 11.67px;" class="tags-cloud-2">动画</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;" class="tags-cloud-0">工作记录</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/" style="font-size: 15px;" class="tags-cloud-5">工具记录</a> <a href="/tags/%E5%BC%80%E5%8F%91%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">开发通识</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 13.33px;" class="tags-cloud-3">思考</a> <a href="/tags/%E6%96%87%E6%91%98/" style="font-size: 10px;" class="tags-cloud-0">文摘</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;" class="tags-cloud-0">测试</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" style="font-size: 15px;" class="tags-cloud-5">游戏开发</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%8B%86%E8%A7%A3%E6%A1%88/" style="font-size: 10px;" class="tags-cloud-0">游戏拆解案</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6/" style="font-size: 10px;" class="tags-cloud-0">游戏机制</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;" class="tags-cloud-5">游戏设计</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83/" style="font-size: 13.33px;" class="tags-cloud-3">游戏设计思考</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;" class="tags-cloud-0">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;" class="tags-cloud-3">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;" class="tags-cloud-10">编程</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">计算机网络</a> <a href="/tags/%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">通识</a>
     </div>
   </div>
 </section>
