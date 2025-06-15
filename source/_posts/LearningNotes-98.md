@@ -1,18 +1,24 @@
 ---
-title: 骨骼动画记录-Godot
-date: 2024-11-14 19:40:03
+title: Spine换装预研
+date: 2025-05-19 19:40:03
 tags: 动画
 categories: 学习笔记
 ---
-## 骨骼动画
-骨骼动画是一种通过骨骼和关节来控制角色的动画技术，可以使用少量的美术素材完成角色的基本动作。基本上，可以理解成是皮影戏并且套用相关的技巧。
+## 关键问题
+1. 换装的部件种类叠加上去后，会不会影响资源加载速度以及运行效率
+2. 开发过程中如何进行维护
+3. 厘清素材部分和运行时部分
 
-目前骨骼动画的软件有不少，本来在考虑是否需要使用spine,但是考虑到独立开发，使用引擎内自带的骨骼动画来实现基本的需求即可。
+## Spine换装文档以及项目
+[官方demo](https://zh.esotericsoftware.com/spine-examples-mix-and-match#Skins)
 
-以下记录下使用Godot编辑器内的骨骼动画编辑来实现动画的基本步骤和关注点。
+## Spine功能
+1. [插槽](https://zh.esotericsoftware.com/spine-slots)
+2. [附件](http://zh.esotericsoftware.com/spine-attachments)
 
-[骨骼动画说明](https://docs.godotengine.org/zh-cn/4.x/tutorials/animation/cutout_animation.html#doc-cutout-animation)
-[官方文档](https://docs.godotengine.org/zh-cn/4.x/tutorials/animation/2d_skeletons.html#introduction)
 
-## 素材要求
-对应皮影戏的道具，基本区分为头部，躯干和四肢六个部分，有必要也可以在腰部将躯干分为两部分，另一方面，可以依赖骨骼动画中带有的权重达到分部位的效果
+## 方案参考
+1. [Spine换装系统（随缘施工中）](https://zhuanlan.zhihu.com/p/649582173)
+   - 定制化的SkeletonData,将不同部位融合成一个spine
+2. [【游戏开发课堂】Unity + Spine 怎么实现换装？](https://www.bilibili.com/video/BV1EM4y1M7MV)
+   - 教程
