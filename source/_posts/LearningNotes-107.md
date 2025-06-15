@@ -6,3 +6,6 @@ tags:
 categories:
     - 学习笔记
 ---
+[杀戮尖塔卡牌设计解析](https://www.bilibili.com/video/BV1Kr4y1i7Es)
+## 策略游戏与策略维度
+策略游戏本质上是在进行资源的分配。
