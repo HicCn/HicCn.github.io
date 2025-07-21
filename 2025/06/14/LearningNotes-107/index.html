@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 7.0.0">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <title>如何设计卡牌构筑类游戏 | 我的笔记</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  
+
+  <!--mathjax latex数学公式显示支持-->
+  
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/assets/images/banner.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          我的笔记
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/works">展示</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">如何设计卡牌构筑类游戏</h1>
+          <h2 class="title-sub-wrap">
+            <strong></strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2025-06-14T05:45:09.000Z" itemprop="datePublished">2025-06-14</time>
+          </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2025-07-19T16:08:59.521Z" itemprop="dateUpdated">2025-07-20</time>
+            </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">📒 学习笔记</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">🏷️ 游戏开发</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kr4y1i7Es">杀戮尖塔卡牌设计解析</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/965724092321759239?spm_id_from=333.1387.0.0">卡牌构筑类游戏设计的解释</a></p>
+<h2 id="策略游戏是什么"><a href="#策略游戏是什么" class="headerlink" title="策略游戏是什么"></a>策略游戏是什么</h2><ul>
+<li>策略游戏关注智力挑战</li>
+<li>策略游戏的游戏体验体现在玩家对游戏系统的理解并调整决策的过程。</li>
+<li>策略游戏的核心循环是理解-决策-验证的循环</li>
+</ul>
+<h2 id="心智结构"><a href="#心智结构" class="headerlink" title="心智结构"></a>心智结构</h2><p>对于玩家视角，所谓的心智结构可以理解成是玩家的游戏理解。而在设计视角，所谓的心智结构就是期望对玩家的游戏理解进行引导和塑造，他要求在游戏过程中为玩家铺好一条通往胜利的道路，期待玩家在不发现这个路径的情况下顺着游戏中预设的思路走向胜利。</p>
+<p>要求这个过程不被玩家发现是因为玩家对游戏的期待就是来自对游戏系统的不理解，如果玩家完全理解了游戏系统，那么玩家就不会再对游戏产生期待，这就像是做数学题时，做到类似题型时会感到无聊。</p>
+<p>而这里的难点就在于保持玩家的不理解，也可以说是游戏的模糊性。事实上，一个合格的玩法设计者本身也很难说找到了游戏最优解，大量的设计与体验都是基于反馈进行调整的。</p>
+<h2 id="保持模糊性"><a href="#保持模糊性" class="headerlink" title="保持模糊性"></a>保持模糊性</h2><ul>
+<li>乐趣源于策略空间的 “模糊性”—— 模糊性让玩家在重复游玩中持续学习、深化理解（若选择影响完全明确，玩家会因 “无需思考” 失去探索欲）。</li>
+<li>模糊性常通过 “多维度设计” 实现（如 RTS 中 “经济 &#x2F; 战力 &#x2F; 科技” 的资源分配选择，每个维度的短期与长期收益不明确，对于一个最求击杀效率的游戏，那么这个维度就是攻击手段，伤害效果，攻击代价之类的维度）。</li>
+<li>核心禁忌：“收益可计算性”—— 若选择的收益能被精确计算，会消解模糊性，削弱策略思考的乐趣。</li>
+</ul>
+<h2 id="构筑核心设计"><a href="#构筑核心设计" class="headerlink" title="构筑核心设计"></a>构筑核心设计</h2><ul>
+<li>必须强调 “模糊性”<ul>
+<li>警惕必选与固定搭配</li>
+</ul>
+</li>
+<li>独特定位<ul>
+<li>必须在顶层决策中保持定位不发生重叠，所谓的顶层策略比如Rts中我希望前期攒经济，后期一波暴兵赢得胜利，那么就要有顺应这个策略的核心道具来达成这样的目标。</li>
+<li>除了顶层策略游戏过程中为了达成目标还有一些其他策略，比如我前期需要苟活，我要思考用什么方式苟活，后期爆兵也要思考选择什么兵种，这些策略之间不能发生重叠。</li>
+<li>游戏过程中应该还有给玩家调整顶层策略的机会</li>
+</ul>
+</li>
+<li>平衡性<ul>
+<li>所有的设计都应该在一个统一的价值体系中。</li>
+</ul>
+</li>
+</ul>
+<h2 id="决策噪音与优化"><a href="#决策噪音与优化" class="headerlink" title="决策噪音与优化"></a>决策噪音与优化</h2><ul>
+<li>决策噪音的来源：选择数量过多过杂（玩家因信息过载无法聚焦核心决策）、选择缺乏模糊性（选择影响完全明确，思考失去意义）。</li>
+<li>理想决策设计：“少量有意义的重要选择”（聚焦核心策略思考）+“目标一致的简单操作”（操作不干扰决策，仅作为策略的执行载体）。</li>
+</ul>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2025/07/08/LearningNotes-109/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">游戏开发纠偏-该做什么样的游戏</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2025/06/07/LearningNotes-106/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">开发框架迭代总结以及思路整理以及后续的开发方向</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/assets/images/avatar.png" class="soft-size--round soft-style--box" alt="张华麟">
+    
+    
+      <h2>张华麟</h2>
+    
+    
+      <p>自由的制作游戏。</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>101</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        7
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        24
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">
+            心得体会 (8)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            学习笔记 (72)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">
+            开发笔记 (8)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+            读书笔记 (4)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+            游戏设计 (3)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">
+            备忘录 (3)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%85%B6%E4%BB%96/">
+            其他 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/C/" style="font-size: 17.5px;" class="tags-cloud-8">C#</a> <a href="/tags/C/" style="font-size: 10px;" class="tags-cloud-0">C++</a> <a href="/tags/laya/" style="font-size: 10px;" class="tags-cloud-0">laya</a> <a href="/tags/shader/" style="font-size: 12.5px;" class="tags-cloud-3">shader</a> <a href="/tags/unity/" style="font-size: 18.75px;" class="tags-cloud-9">unity</a> <a href="/tags/%E5%89%A7%E6%83%85/" style="font-size: 10px;" class="tags-cloud-0">剧情</a> <a href="/tags/%E5%8A%A8%E7%94%BB/" style="font-size: 11.25px;" class="tags-cloud-1">动画</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;" class="tags-cloud-0">工作记录</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/" style="font-size: 15px;" class="tags-cloud-5">工具记录</a> <a href="/tags/%E5%BC%80%E5%8F%91%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">开发通识</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 13.75px;" class="tags-cloud-4">思考</a> <a href="/tags/%E6%96%87%E6%91%98/" style="font-size: 10px;" class="tags-cloud-0">文摘</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;" class="tags-cloud-0">测试</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;" class="tags-cloud-6">游戏开发</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%8B%86%E8%A7%A3%E6%A1%88/" style="font-size: 10px;" class="tags-cloud-0">游戏拆解案</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6/" style="font-size: 10px;" class="tags-cloud-0">游戏机制</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;" class="tags-cloud-5">游戏设计</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83/" style="font-size: 12.5px;" class="tags-cloud-3">游戏设计思考</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;" class="tags-cloud-0">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;" class="tags-cloud-3">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;" class="tags-cloud-10">编程</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">计算机网络</a> <a href="/tags/%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">通识</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/HicCn" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+      
+    </div>
+     
+    <p>&copy; 2025 <a href="/" target="_blank"></a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+<!-- copy button  -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
