@@ -14,7 +14,7 @@ type: index
   - 图形学
 - 工具开发
   - python
-- 绘画 <span class="heimu" title="你知道的太多了">不能说我从初中就开始画画，并且画的最好的时候是初中 T-T</span>
+- 绘画
   - 动画 spine
 - 编曲
   - 练键盘
