@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 7.0.0">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <title>面试题整理 | 我的笔记</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  
+
+  <!--mathjax latex数学公式显示支持-->
+  
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/assets/images/banner.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          我的笔记
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/works">展示</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">面试题整理</h1>
+          <h2 class="title-sub-wrap">
+            <strong></strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2025-09-10T14:50:59.000Z" itemprop="datePublished">2025-09-10</time>
+          </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2025-09-11T05:16:37.169Z" itemprop="dateUpdated">2025-09-11</time>
+            </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">📒 学习笔记</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E7%BC%96%E7%A8%8B/">🏷️ 编程</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>整理下八股和回忆下项目细节。</p>
+<h2 id="如何理解ECS跳转"><a href="#如何理解ECS跳转" class="headerlink" title="如何理解ECS跳转"></a>如何理解ECS<a target="_blank" rel="noopener" href="https://hiccn.github.io/2022/11/03/LearningNotes-5/">跳转</a></h2><pre><code>首先，我认为ecs是一种框架的范式，翻译过来就是实体，组件和系统，我理解ecs的切入点是流场寻路，我觉得ecs的理念和流场的理念有些类似，他都是期望对所有实体施加一个统一的规则来完成一个具体的任务，在流场中，需要一个目标点，流场的逻辑会构建出完整的向量场，然后实体依照构建出来的向量场移动类比过来，构建向量场与移动可能就可以对应到ecs中system的部分，而实体就是流场中的实体，组件中就包含了实体的目标位置。那么ecs基本上就是将这个思想进一步泛化到更多的业务逻辑上，这样实体表现出什么行为并不是实体自身在控制而是一套统一的系统在控制。我觉得这是ecs的核心思想。但是实际开发的时候，大家的出发点其实是大部一样的，比如我之前在四三九九的时候，当时的大哥也希望推ecs，但他的出发点是对逻辑层进一步解耦出逻辑的部分和数据的部分。包括我还了解到有点项目在推ecs但是是处于异步编程的考虑，这块我没太理解，也没深入的聊过。
+</code></pre>
+<h2 id="如何理解mvc"><a href="#如何理解mvc" class="headerlink" title="如何理解mvc"></a>如何理解mvc</h2><p>   mvc最基本的就是视图层，逻辑层和控制层，这个架构范式已经很成熟了，理解成本也更低，包括我自己目前在更新的项目也是用的mvc，我的做法简单点来说，我会有一个linker脚本，这个脚本主要负责来收集预制体上的视图组件并且绑定对应的node脚本，这个node脚本就是广义上的控制器脚本，视图组件就是视图层的部分，这部分通常我们会在进行一次封装，最后由广义的业务框架来决定这个node脚本如何更新视图。</p>
+<h2 id="如何理解mvvm跳转"><a href="#如何理解mvvm跳转" class="headerlink" title="如何理解mvvm跳转"></a>如何理解mvvm<a target="_blank" rel="noopener" href="https://hiccn.github.io/2024/05/25/LearningNotes-86/">跳转</a></h2><pre><code>mvvm我的理解就是在mvc的基础上进一步的将控制控制层解耦了，在原先的控制器层和视图层中间插入了一个viewModel层，这样视图组件如何显示都依赖viewModel向组件提供了什么样的数据，这样减轻了原本控制器所承担的职责，对于原先的控制器来说，他事实上即负责了业务的更新，也负责了视图的更新，而mvvm则将这两部分解耦了，视图的更新由viewModel来负责，而业务逻辑的更新则由控制器来负责，这样使得代码的职责更加单一，也使得代码的可维护性更高。
+</code></pre>
+<h2 id="unity-游戏开发八股"><a href="#unity-游戏开发八股" class="headerlink" title="unity&amp;游戏开发八股"></a>unity&amp;游戏开发八股</h2><ol>
+<li>Awake、Start、OnEnable 之间的区别和联系<ol>
+<li>Awake:在脚本实例时执行，无论是否激活都会执行，start:在脚本首次激活时执行，onEnable:在脚本每次激活时都会执行</li>
+</ol>
+</li>
+<li>什么是协程？协程和多线程的区别是什么？<ol>
+<li>线程是操作系统级别的资源，用操作系统调度，协程是应用程序级别的资源，不同的应用可以有不同的实现方式，常见的就是用io操作阻塞代码执行，在Unity中协程的实现就是将逻辑分摊到其他帧中执行，在满足特定条件后在后继帧中执行后续的代码，这样就不会阻塞主线程。对于线程和多线程，多线程是并行的，但是协程实际上是串行的，在更底层上，线程的调度是在操作。在unity，unity并不保证api是线程安全，所以如果在unity需要利用多线程的能力，一般上在子线程上处理计算逻辑，但是我还没见过有哪个项目有这么做，异步就完全够用了。</li>
+</ol>
+</li>
+<li>异步与协程<ol>
+<li>异步是一种编程思想，协程是实现这种思想的工具。</li>
+</ol>
+</li>
+<li>解释下UniTask<ol>
+<li>UniTask 作为专为 Unity 优化的第三方库，支持0GC和与mono脚本的生命周期绑定，并且对于unity是线程安全的</li>
+</ol>
+</li>
+<li>FixedUpdate 和 Update 在物理处理中的区别<ol>
+<li>updata就是每帧调用一次，fixedupdate是固定帧率调用一次，在物理处理中，fixedupdate在物理处理之前调用，所以与物理有关的逻辑应该放在fixedupdate中。</li>
+</ol>
+</li>
+<li>相机<ol>
+<li>透视相机：遵循 “近大远小” 的透视原理，物体距离相机越远，显示越小，能模拟人眼视觉，产生立体感；正交相机：物体大小与距离无关，仅由 “Size” 参数决定（2D 中表现为高度的一半），无透视效果，物体显示为平面大小一致。</li>
+<li>遮挡如何实现：从相机朝目标位置发射射线</li>
+</ol>
+</li>
+<li>插值函数的使用场景<ol>
+<li>插值函数一般用于平滑过渡，比如动画的播放，物体的移动，UI的显示等。</li>
+</ol>
+</li>
+</ol>
+<h2 id="C-八股"><a href="#C-八股" class="headerlink" title="C#八股"></a>C#八股</h2><ol>
+<li>C#中值类型和引用类型的区别<ol>
+<li>值类型存储在栈中，引用类型存储在堆中，值类型传递时是深拷贝，引用类型赋值时是浅拷贝传递引用。</li>
+</ol>
+</li>
+<li>什么是GC<ol>
+<li>GC是内存管理的重要环节，GC会自动回收不再使用的内存，但是GC的回收机制是自动的，高级语言基本上避免主动的进行内存管理。</li>
+<li>常见的导致频繁GC的原因：在Update中大量创建对象，频繁的字符串拼接。</li>
+<li>核心优化手段，对象池与复用</li>
+</ol>
+</li>
+<li>装箱（Boxing） 和拆箱（Unboxing）<ol>
+<li>装箱：值类型转换为引用类型，拆箱：引用类型转换为值类型</li>
+<li>C#中将值类型赋值给objcet或者某的接口将触发装箱，将object或者接口赋值给值类型将触发拆箱。</li>
+</ol>
+</li>
+</ol>
+<h2 id="算法与设计模式八股"><a href="#算法与设计模式八股" class="headerlink" title="算法与设计模式八股"></a>算法与设计模式八股</h2><ol>
+<li>常见的核心思想<ol>
+<li>动态规划：将复杂问题拆分成若干子问题，通过保留子问题的解来提高求解效率，本质上是一种分治的思想。</li>
+<li>贪心算法：通过局部最优来达到全局最优。</li>
+<li>回溯算法：通过对尝试的回退（尝试求解失败时）逐渐构建问题的解</li>
+</ol>
+</li>
+<li>设计模式总结<ol>
+<li>观察者模式<ol>
+<li>针对问题：一个对象改变需要联动多个对象，多个对象之间需要解耦</li>
+</ol>
+</li>
+<li>策略模式<ol>
+<li>针对问题：一个对象有多种行为，并且需要动态切换，比如游戏中的角色有不同的攻击方式，需要动态切换</li>
+</ol>
+</li>
+<li>工厂模式<ol>
+<li>针对问题：一个对象需要根据不同的条件创建不同的实例，比如行为树中需要根据配置实例不同的子节点</li>
+</ol>
+</li>
+<li>单例模式<ol>
+<li>针对问题：一个对象需要全局唯一，比如游戏中的配置表，需要全局唯一</li>
+</ol>
+</li>
+<li>命令模式<ol>
+<li>针对问题：将请求作为一个对象之后，可以通过对请求的管理实现撤销，重做等操作。</li>
+</ol>
+</li>
+<li>装饰模式<ol>
+<li>针对问题：一个对象需要动态添加功能，比如游戏中的角色，需要动态添加buff，或者是通过效果的组合表现成一个新的抽象概念，比如游戏中的NPC，装备了不同的武器，不同的技能就可以表现为不同的职业。</li>
+</ol>
+</li>
+<li></li>
+</ol>
+</li>
+<li>状态机<ol>
+<li>状态机是一种编程范式，用于处理对象在生命周期中可能存在的状态以及状态之间的转换关系，状态机通常由状态、动作和转换条件组成，状态机主要面对的问题就是管理游戏对象的状态，比如进入局内玩法内容时，流程中就区分了预备，运行中和结束的状态。</li>
+<li>状态机面对状态膨胀需要引入层级概念</li>
+<li>一般来说，状态机主要负责状态切换，而状态的行为则由状态机之外的其他逻辑来处理，基本上只有对于一些简单的AI逻辑，才会选择直接实现，因为行为逻辑和状态切换是两块不同的内容，行为逻辑也很容易发生膨胀。</li>
+</ol>
+</li>
+<li>行为树<ol>
+<li>行为树一般是由动作节点组合节点，条件节点和装饰节点组成，动作节点表示一个具体的操作，条件节点表示一个判断条件，装饰节点表示对动作节点的修饰，行为树一般用于处理复杂的逻辑。</li>
+<li>对比状态机直接处理行为，行为树的逻辑就显得更加清晰，并且行为树是通过组合节点来完成动作逻辑的，所以行为树更容易扩展，并且更加灵活。</li>
+</ol>
+</li>
+</ol>
+<h2 id="Unity-优化"><a href="#Unity-优化" class="headerlink" title="Unity 优化"></a>Unity 优化</h2><ol>
+<li>DrawCall是什么<ol>
+<li>DrawCall是CPU向GPU发生渲染指令的过程，每次DrawCall都会消耗一定的性能，所以减少DrawCall是性能优化的一个重要手段。</li>
+</ol>
+</li>
+<li>DrawCall优化手段<ol>
+<li>静态合批</li>
+<li>动态合批<ol>
+<li>打图集</li>
+<li>保证scale一致</li>
+</ol>
+</li>
+<li>GPU 实例化</li>
+<li>默认隐藏节点</li>
+<li>逻辑处理<ol>
+<li>LOD 根据相机位置切换模型质量</li>
+<li>剔除视口外对象<ol>
+<li>视锥剔除</li>
+<li>遮挡剔除</li>
+</ol>
+</li>
+<li>材质的实例管理，复用材质</li>
+</ol>
+</li>
+<li>细节处理<ol>
+<li>图片资源合并，比如背景和标题合并到一张图中</li>
+<li>删除非必要的Canvas</li>
+<li>Mask组件也会打断合批，使用RectMask2D代替</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="热更"><a href="#热更" class="headerlink" title="热更"></a>热更</h2><ol>
+<li>HybridCLR<ol>
+<li>HybridCLR 是一个基于 Unity 的热更方案，它允许在运行时动态加载和执行 C# 代码，从而实现游戏的热更功能。HybridCLR 使用了 IL2CPP 技术，将 C# 代码编译为 C++ 代码，然后通过动态加载和执行 C++ 代码来实现热更功能。</li>
+</ol>
+</li>
+</ol>
+<h2 id="帧同步跳转"><a href="#帧同步跳转" class="headerlink" title="帧同步跳转"></a>帧同步<a target="_blank" rel="noopener" href="https://hiccn.github.io/2024/07/07/LearningNotes-92/">跳转</a></h2><ol>
+<li>帧同步的原理</li>
+</ol>
+<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><ol>
+<li>技术选型的思路<ol>
+<li>引擎选择<ol>
+<li>团队的技术积累</li>
+<li>团队资源积累</li>
+<li>项目需求<ol>
+<li>主要运行平台</li>
+<li>画面表现</li>
+</ol>
+</li>
+<li>生态</li>
+</ol>
+</li>
+<li>基础的功能支持，要求稳定，可维护即可<ol>
+<li>存档 json.net</li>
+<li>定时器 自己实现<ol>
+<li>时间轮优化</li>
+</ol>
+</li>
+<li>事件广播 自己实现<ol>
+<li>嵌套广播</li>
+</ol>
+</li>
+<li>外部配置<ol>
+<li>Luban</li>
+<li>Scriptableobject（Unity）</li>
+</ol>
+</li>
+<li>多语言<ol>
+<li>依赖配置表，自己封装</li>
+<li>localization插件</li>
+</ol>
+</li>
+<li>日志<ol>
+<li>支持对日志的管理，自己封装</li>
+</ol>
+</li>
+<li>网络<ol>
+<li>传输层协议<ol>
+<li>TCP (可靠连接，按序到达)<ol start="2">
+<li>TcpClient</li>
+</ol>
+</li>
+<li>UDP （不保证按序到达，低延迟）<ol>
+<li>ENet</li>
+<li>Kcp</li>
+<li>LiteNetLib</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>序列化<ol>
+<li>ProtoBuf<ol>
+<li>二进制格式，体积紧凑（比 JSON 小 30%-50%）</li>
+</ol>
+</li>
+<li>FlatBuffers<ol>
+<li>二进制格式，零拷贝（序列化后的数据可直接内存访问，无需解析）</li>
+<li>数据结构修改成本高，开发体验稍差</li>
+</ol>
+</li>
+<li>Json<ol>
+<li>可读性强</li>
+</ol>
+</li>
+<li>自定义序列化</li>
+</ol>
+</li>
+<li>完整的通信框架<ol>
+<li>Mirror</li>
+<li>Netcode</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>热更<ol>
+<li>HybridCLR <span class="heimu">没理由不选的一集</span><ol>
+<li>原生C#热更开发 <ol>
+<li>提前划分程序集</li>
+<li>完整支持C#特性</li>
+</ol>
+</li>
+<li>高性能</li>
+</ol>
+</li>
+<li>XLua<ol>
+<li>Lua无感热更开发</li>
+<li>需要虚拟机</li>
+<li>适合多语言团队<ol>
+<li>策划写代码之类的</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>ILRuntime<ol>
+<li>C#有感热更开发开发 <ol>
+<li>泛型使用受限</li>
+</ol>
+</li>
+<li>接入成本低，适合项目早期临时使用</li>
+<li>性能中等</li>
+<li>兼容问题多</li>
+</ol>
+</li>
+<li>InjectFix<ol>
+<li>支持函数级替换</li>
+<li>不支持构造函数、泛型方法、新增字段等复杂场景</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>业务架构 （根据需求混合）<ol>
+<li>MVC</li>
+<li>ECS</li>
+<li>MVVM</li>
+<li>其他</li>
+</ol>
+</li>
+<li></li>
+</ol>
+</li>
+</ol>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>持续整理中。。。<br><span class="heimu">密码的八股能不能放过我这一次 &#x2F;_ &lt;&#x2F;span&gt;</p>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2025/08/05/LearningNotes-114/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">开发过程中的细节统一</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/assets/images/avatar.png" class="soft-size--round soft-style--box" alt="张华麟">
+    
+    
+      <h2>张华麟</h2>
+    
+    
+      <p>自由的制作游戏。</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>106</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        7
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        25
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">
+            心得体会 (8)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            学习笔记 (76)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">
+            开发笔记 (9)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+            读书笔记 (4)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+            游戏设计 (3)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">
+            备忘录 (3)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E5%85%B6%E4%BB%96/">
+            其他 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/C/" style="font-size: 17.5px;" class="tags-cloud-8">C#</a> <a href="/tags/C/" style="font-size: 10px;" class="tags-cloud-0">C++</a> <a href="/tags/laya/" style="font-size: 10px;" class="tags-cloud-0">laya</a> <a href="/tags/shader/" style="font-size: 12.5px;" class="tags-cloud-3">shader</a> <a href="/tags/unity/" style="font-size: 18.75px;" class="tags-cloud-9">unity</a> <a href="/tags/%E5%89%A7%E6%83%85/" style="font-size: 10px;" class="tags-cloud-0">剧情</a> <a href="/tags/%E5%8A%A8%E7%94%BB/" style="font-size: 11.25px;" class="tags-cloud-1">动画</a> <a href="/tags/%E5%A4%87%E5%BF%98%E6%95%B4%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">备忘整理</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;" class="tags-cloud-0">工作记录</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/" style="font-size: 15px;" class="tags-cloud-5">工具记录</a> <a href="/tags/%E5%BC%80%E5%8F%91%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">开发通识</a> <a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 13.75px;" class="tags-cloud-4">思考</a> <a href="/tags/%E6%96%87%E6%91%98/" style="font-size: 10px;" class="tags-cloud-0">文摘</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;" class="tags-cloud-0">测试</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" style="font-size: 17.5px;" class="tags-cloud-8">游戏开发</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%8B%86%E8%A7%A3%E6%A1%88/" style="font-size: 10px;" class="tags-cloud-0">游戏拆解案</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6/" style="font-size: 10px;" class="tags-cloud-0">游戏机制</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 16.25px;" class="tags-cloud-6">游戏设计</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83/" style="font-size: 12.5px;" class="tags-cloud-3">游戏设计思考</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;" class="tags-cloud-0">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;" class="tags-cloud-3">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;" class="tags-cloud-10">编程</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;" class="tags-cloud-0">计算机网络</a> <a href="/tags/%E9%80%9A%E8%AF%86/" style="font-size: 10px;" class="tags-cloud-0">通识</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/HicCn" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+      
+    </div>
+     
+    <p>&copy; 2025 <a href="/" target="_blank"></a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+<!-- copy button  -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
