@@ -1,7 +1,7 @@
 ---
 title: Unity中脚本的生命周期
 tags:
-  - unity
+  - Unity
 categories: 学习笔记
 date: 2022-11-16 04:01:16
 ---

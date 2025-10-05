@@ -3,7 +3,7 @@ title: Unity Editor 拓展Inspector面板
 date: 2024-03-22 16:16:53
 categories: 学习笔记
 tags:
-    - unity
+    - Unity
 ---
 [官方文档入口](https://docs.unity.cn/cn/2021.1/Manual/UsingTheInspector.html)
 ## 脚本上的常规标签

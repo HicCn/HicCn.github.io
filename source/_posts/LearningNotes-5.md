@@ -2,7 +2,7 @@
 title: 对ECS架构的初步理解以及Unity中的ECS
 tags:  
     - 编程
-    - unity
+    - Unity
 categories: 学习笔记
 date: 2022-11-03 21:41:33
 ---

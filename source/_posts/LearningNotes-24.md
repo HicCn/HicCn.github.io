@@ -1,7 +1,7 @@
 ---
 title: 问题记录——动态读取配置文本时Unity不正确的原样输出转义字符
 tags: 
-    - unity
+    - Unity
 categories: 学习笔记
 date: 2022-11-16 04:15:44
 ---

@@ -1,5 +1,5 @@
 ---
-title: Unity热更新了解
+title: 网络游戏热更新基本了解
 tags: unity
 categories: 学习笔记
 date: 2023-02-26 21:59:08
@@ -20,19 +20,13 @@ date: 2023-02-26 21:59:08
 
 <span class="heimu">了解完远比想象的复杂啊！！！！，本来想一文搞定，看来只能简单介绍了。</span>
 
-### Lua热更原理
-Lua是解释型语言，意味着Lua代码进行调整时并不需要经过重新编译即可使用，所以可以将逻辑代码转化为Lua脚本，以更新资源的形式对资源进行替换即可。
+## 热更新方案整理
+1. 基于解释型语言的方案
+    - 基于Lua的热更方案
+2. 基于编译型语言的动态加载
+   1. 基于IL2CPP的热更方案
+   2. 基于C#反射的热更方案
+3. 跨语言调用
 
-相对应的框架有：
-- XLua
-- SLua
-- ToLua
-
-### 通过IL2CPP进行热更新
-
-IL2CPP（Intermediate Language to C++）是Unity引擎中一种用于将C#代码编译为C++代码的转换器。它将C#的中间语言（IL）转换为高效的、可执行的C++代码，以提高游戏在不同平台上的性能和安全性。
-
-相对应的框架有：
-- [HybridCLR](https://hybridclr.doc.code-philosophy.com/docs/intro)
-- ILRuntime
-
+## 其他需要关注的问题
+- CDN加速

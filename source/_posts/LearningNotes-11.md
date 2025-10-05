@@ -1,7 +1,7 @@
 ---
 title: Unity Shader入门精要基础篇笔记 ×
 tags: 
-    - unity
+    - Unity
 categories: 读书笔记
 date: 2022-11-11 18:10:32
 ---

@@ -1,7 +1,7 @@
 ---
 title: unity 图片和文本组合居中
 tags: 
-    - unity
+    - Unity
     - 编程
 categories: 学习笔记
 date: 2022-12-09 16:05:23
